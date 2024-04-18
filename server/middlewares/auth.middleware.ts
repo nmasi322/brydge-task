@@ -5,7 +5,7 @@ import CustomError from "../utils/custom-error";
 import * as express from "express";
 // import { CustomRequest } from "../types/extended";
 
-import { PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 interface JWTPayload {
   id: string;
@@ -40,14 +40,22 @@ const auth = () => {
     }
 
     if (decoded !== null) {
-      const user = await prisma.user.findUnique({
-        where: { id: parseInt(decoded.id) },
-      });
+      try {
+        const user = await prisma.user.findUnique({
+          where: { id: parseInt(decoded.id) },
+        });
 
-      if (!user)
-        throw new CustomError("unauthorized access: User does not exist", 401);
+        if (!user)
+          throw new CustomError(
+            "unauthorized access: User does not exist",
+            401
+          );
 
-      (req as any).user = user;
+        (req as any).user = user;
+      } finally {
+        await prisma.$disconnect();
+      }
+
       next();
     }
   };
