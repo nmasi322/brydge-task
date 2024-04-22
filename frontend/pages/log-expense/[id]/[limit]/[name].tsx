@@ -59,7 +59,7 @@ export default function LogExpense() {
       }
     }
     runProgram().catch(console.error);
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     // extract the expenses amount
