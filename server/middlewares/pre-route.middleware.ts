@@ -8,7 +8,7 @@ import type { Application } from "express";
 
 const CORS_SETTINGS = {
   credentials: true,
-  origin: ["http://localhost:3000", "https://brydge-task.vercel.app/"],
+  origin: ["http://localhost:3000", "https://brydge-task.vercel.app"],
 };
 
 export default (app: Application) => {
