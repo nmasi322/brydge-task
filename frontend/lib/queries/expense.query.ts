@@ -41,6 +41,8 @@ export async function createExpense(
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
@@ -64,6 +66,8 @@ export async function deleteExpense(id: number) {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
@@ -87,6 +91,8 @@ export async function getExpenses(id: number) {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }

@@ -62,6 +62,8 @@ export async function login(email: string, password: string) {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
   }
 }
@@ -86,6 +88,8 @@ export async function getProfile() {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     console.log(error);
   }

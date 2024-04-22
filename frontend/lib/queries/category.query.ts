@@ -38,6 +38,8 @@ export async function createBudget(
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
@@ -78,6 +80,8 @@ export async function updateBudget(
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
@@ -101,6 +105,8 @@ export async function deleteBudget(id: number) {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
@@ -124,6 +130,8 @@ export async function getMyBudgets(id: number) {
       ErrorToast(
         "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
       );
+    } else {
+      ErrorToast(error.response.data.message);
     }
     throw error.response.data.error;
   }
