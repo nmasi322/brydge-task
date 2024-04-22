@@ -2,7 +2,7 @@ import { CohereClient, CohereError, CohereTimeoutError } from "cohere-ai";
 import { ErrorToast } from "../../components/Toast";
 
 const cohere = new CohereClient({
-  token: "9bOPOZV4AMZmAr45Uf7wKpk9WzQiVukYlUwL4PbD",
+  token: process.env.NEXT_PUBLIC_COHERE_API_KEY,
 });
 
 interface GenerateAiAdvice {

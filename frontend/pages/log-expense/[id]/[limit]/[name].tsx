@@ -6,7 +6,6 @@ import {
 } from "../../../../lib/queries/expense.query";
 import { useRouter } from "next/router";
 import Spinner from "../../../../components/Spinner";
-import { getFromStorage } from "../../../../lib/storage";
 import ExpenseTable from "../../../../components/ExpenseTable";
 import { generateAiAdvice } from "../../../../lib/queries/ai.query";
 import Chart, { ChartArray } from "../../../../components/Chart";
