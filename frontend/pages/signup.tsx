@@ -36,7 +36,7 @@ export default function Singup() {
     <div>
       <ToastContainer />
       <section className="bg-gray-900">
-        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto max-lg:min-h-screen lg:h-screen lg:py-0">
           <div className="mb-6">
             <a href="#" className="flex items-center mb-6">
               <Image

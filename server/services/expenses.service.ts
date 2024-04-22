@@ -44,11 +44,11 @@ class ExpensesService {
     }
   }
 
-  async getByUser(id: number) {
+  async getByUser(id: number, categoryId: number) {
     try {
       // check if it exists
       const existingeExpense = await prisma.expenses.findMany({
-        where: { userId: id },
+        where: { userId: id, categoryId },
       });
 
       if (!existingeExpense || existingeExpense === null) {

@@ -15,7 +15,10 @@ class ExpensesController {
   }
 
   async getByUser(req: Request, res: Response) {
-    const result = await ExpensesService.getByUser(parseInt(req.params.id));
+    const result = await ExpensesService.getByUser(
+      (req as any).user.id,
+      parseInt(req.params.id)
+    );
     res.status(200).send(response("expenses by this user", result));
   }
 

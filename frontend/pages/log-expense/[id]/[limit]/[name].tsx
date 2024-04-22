@@ -45,15 +45,18 @@ export default function LogExpense() {
       setUser(userDetails);
 
       // get budget expenses data
-      const expensesList = await getExpenses(userDetails.id);
-
-      const dataForChart = expensesList.map((expense: Expense) => [
-        expense.date,
-        expense.amount,
-      ]);
-      setChartData(dataForChart);
-      setExpenses(expensesList);
-      setTableLoader(false);
+      if (router.query.id) {
+        const expensesList = await getExpenses(
+          parseInt(router.query.id.toString())
+        );
+        const dataForChart = expensesList.map((expense: Expense) => [
+          expense.date,
+          expense.amount,
+        ]);
+        setChartData(dataForChart);
+        setExpenses(expensesList);
+        setTableLoader(false);
+      }
     }
     runProgram().catch(console.error);
   }, []);
