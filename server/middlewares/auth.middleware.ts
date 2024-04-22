@@ -25,7 +25,7 @@ const auth = () => {
       ? req.headers.authorization.split(" ")[1]
       : "";
 
-    if (!token)
+    if (!token || token === null)
       throw new CustomError("unauthorized access: Token not found", 401);
 
     // Implementation allows for authorization to be read from req header and httpOnly cookie

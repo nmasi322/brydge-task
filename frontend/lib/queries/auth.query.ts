@@ -76,7 +76,7 @@ export async function getProfile() {
 
     return data.data.data.user;
   } catch (error: any) {
-    if (error.response.data.message === "Unauthorized access: Token expired") {
+    if (error.response.data.message.includes("Unauthorized access")) {
       window.location.href = "/login";
     } else if (
       error.response.data.message.includes(
