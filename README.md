@@ -1,6 +1,6 @@
 Hello Evaluator!
 
-Here's my task for the Brydge Full-Stack Developer Application.
+Here's my submission for the Brydge Full-Stack Developer Application task given to me on 17/04/2024.
 
 ## Financial Dashboard
 I was tasked with developing a feature for your fintech platform, allowing users to craft, tailor, and oversee budget categories, enhancing financial planning. This led me to develop an intuitive and visually pleasing dashboard where users have easy access to various actions like creating a budget category, modifying and deleting it at a glance. Here users can view their spending history and allocate funds to different budget categories. Upon signing up, you have access to a million naira to test the application.
