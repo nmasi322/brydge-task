@@ -20,13 +20,15 @@ model User {
   name           String            @db.VarChar(255)
   password           String            @db.VarChar(255)
   email   String   @unique
+  balance  Int @default(0) 
+  totalAllocatedAmount  Int @default(0) 
   categories  Category[]
 }
 
 model Expenses {
   id             Int               @id @default(autoincrement())
   description    String
-  date           DateTime
+  date           String
   amount           Int    
   category   Category   @relation(fields: [categoryId], references: [id])   
   categoryId   Int

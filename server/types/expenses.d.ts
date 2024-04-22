@@ -1,6 +1,6 @@
 interface CreateExpense {
   description: string;
-  date: Date;
+  date: string;
   amount: number;
   categoryId: number;
 }

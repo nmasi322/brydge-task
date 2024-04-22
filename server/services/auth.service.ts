@@ -21,7 +21,9 @@ class AuthService {
 
       const hash = await bcrypt.hash(data.password, BCRYPT_SALT);
 
-      user = await prisma.user.create({ data: { ...data, password: hash } });
+      user = await prisma.user.create({
+        data: { ...data, balance: 1000000, password: hash },
+      });
 
       // Generate Auth tokens
       const authTokens = await this.generateAuthTokens({
@@ -56,7 +58,7 @@ class AuthService {
       const user = await prisma.user.findUnique({
         where: { email: data.email },
       });
-      if (!user) throw new CustomError("user  ot found", 404);
+      if (!user) throw new CustomError("user not found", 404);
 
       const isCorrect = await bcrypt.compare(data.password, user.password);
       if (!isCorrect) throw new CustomError("incorrect email or password", 400);

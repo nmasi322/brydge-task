@@ -11,6 +11,8 @@ router.put("/update/:id", Auth(), categoryManagerController.update);
 
 router.get("/get/:id", Auth(), categoryManagerController.get);
 
+router.get("/get-by-user/:id", Auth(), categoryManagerController.getByUser);
+
 router.delete("/delete/:id", Auth(), categoryManagerController.delete);
 
 export default router;
