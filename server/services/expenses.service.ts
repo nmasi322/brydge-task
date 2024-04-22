@@ -44,6 +44,24 @@ class ExpensesService {
     }
   }
 
+  async getByUser(id: number) {
+    try {
+      // check if it exists
+      const existingeExpense = await prisma.expenses.findMany({
+        where: { userId: id },
+      });
+
+      if (!existingeExpense || existingeExpense === null) {
+        throw new CustomError("expense does not exist", 404);
+      }
+
+      // return expense if it exists
+      return { expenses: existingeExpense };
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+
   // delete an expense
   async delete(id: number) {
     try {

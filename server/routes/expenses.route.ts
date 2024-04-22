@@ -10,6 +10,7 @@ router.post("/create", Auth(), expensesController.create);
 // router.post("/update", Auth(), categoryManagerController.update);
 
 router.get("/get/:id", Auth(), expensesController.get);
+router.get("/get-by-user/:id", Auth(), expensesController.getByUser);
 
 router.delete("/delete/:id", Auth(), expensesController.delete);
 

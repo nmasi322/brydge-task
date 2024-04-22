@@ -34,9 +34,8 @@ const auth = () => {
     try {
       // attempts to verify header token
       decoded = jsonwebtoken.verify(token, JWT.JWT_SECRET) as JWTPayload;
-      console.log(decoded);
     } catch (err) {
-      console.log(err);
+      throw new CustomError("unauthorized access: Token expired", 400);
     }
 
     if (decoded !== null) {
