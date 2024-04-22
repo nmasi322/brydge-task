@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import { getFromStorage, saveMultipleItemsToStorage } from "../../lib/storage";
+import { ErrorToast } from "../../components/Toast";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function signup(name: string, email: string, password: string) {
   try {
-    const { data } = await axios.post("http://localhost:8000/api/auth/signup", {
+    const { data } = await axios.post(`${API_URL}/auth/signup`, {
       name,
       email,
       password,
@@ -21,13 +24,21 @@ export async function signup(name: string, email: string, password: string) {
 
     return user;
   } catch (error: any) {
-    throw error.response.data.error;
+    if (
+      error.response.data.message.includes(
+        "Please make sure your database server is running at `aws-0-us-west-1.pooler.supabase.com`:`6543"
+      )
+    ) {
+      ErrorToast(
+        "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
+      );
+    }
   }
 }
 
 export async function login(email: string, password: string) {
   try {
-    const { data } = await axios.post("http://localhost:8000/api/auth/login", {
+    const { data } = await axios.post(`${API_URL}/auth/login`, {
       email,
       password,
     });
@@ -43,7 +54,15 @@ export async function login(email: string, password: string) {
 
     return user;
   } catch (error: any) {
-    throw error.response.data.message;
+    if (
+      error.response.data.message.includes(
+        "Please make sure your database server is running at `aws-0-us-west-1.pooler.supabase.com`:`6543"
+      )
+    ) {
+      ErrorToast(
+        "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
+      );
+    }
   }
 }
 
@@ -51,7 +70,7 @@ export async function getProfile() {
   try {
     const token = getFromStorage("accessToken");
 
-    const data = await axios.get("http://localhost:8000/api/auth/me", {
+    const data = await axios.get(`${API_URL}/auth/me`, {
       headers: { Authorization: `bearer ${token}` },
     });
 
@@ -59,6 +78,14 @@ export async function getProfile() {
   } catch (error: any) {
     if (error.response.data.message === "Unauthorized access: Token expired") {
       window.location.href = "/login";
+    } else if (
+      error.response.data.message.includes(
+        "Please make sure your database server is running at `aws-0-us-west-1.pooler.supabase.com`:`6543"
+      )
+    ) {
+      ErrorToast(
+        "Supabase is not running at it's server. It's a common issue with supabase, please refresh the page and try again"
+      );
     }
     console.log(error);
   }

@@ -4,6 +4,7 @@ import logo from "../assets/logo.svg";
 import { login } from "../lib/queries/auth.query";
 import Link from "next/link";
 import Spinner from "../components/Spinner";
+import { ToastContainer } from "react-toastify";
 
 export interface Credentials {
   email: string;
@@ -33,6 +34,7 @@ export default function Login() {
   }
   return (
     <div>
+      <ToastContainer />
       <section className="bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="mb-6">
