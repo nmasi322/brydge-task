@@ -6,6 +6,7 @@
     "target": "ES6",
     "module": "commonjs",
     "rootDir": "./",
+    "outDir": "./build",
     "typeRoots": ["types/*"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
